@@ -30,3 +30,7 @@ require('./index')(app);
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
 });
+
+app.get("/", function(req, res) {
+  res.json(path.join(__dirname, "./index.html"));
+});
