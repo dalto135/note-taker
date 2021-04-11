@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 
-require('./Develop/public/assets/js/index')(app);
+// require('./Develop/public/assets/js/index')(app);
 // require('./Develop/db/db.json')(app);
 
 
