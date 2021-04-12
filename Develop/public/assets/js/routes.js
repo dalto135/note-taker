@@ -10,7 +10,7 @@ module.exports = (app) => {
     app.post("/api/notes", function(req, res) {
     //   db.push(req.body);
       let newEntry = {
-        id: Math.random() * 100,
+        id: Math.random(),
         title: req.body.title,
         text: req.body.text
       };
