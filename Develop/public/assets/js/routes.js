@@ -8,7 +8,6 @@ module.exports = (app) => {
       console.log('db');
     });
     app.post("/api/notes", function(req, res) {
-    //   db.push(req.body);
       let newEntry = {
         id: Math.random(),
         title: req.body.title,
@@ -25,17 +24,17 @@ module.exports = (app) => {
     });
     //Bonus
     // app.delete(`/api/notes/:${id}`, function(req, res) {
-    //   let array = [];  
+    //   let array = [];
     //   for (let i = 0; i < db.length; i++) {
     //       if (db[i].id !== id) {
     //           array.push(db[i]);
     //       }
     //   }
     //   db = array;
-    //   res.json(true);
+    //   res.json(db);
     // });
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../../index.html'));
         console.log('index');
     });
-  }
+}
