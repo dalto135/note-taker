@@ -1,7 +1,6 @@
 const path = require('path');
 const db = require('../../../db/db.json');
 
-
 module.exports = (app) => {
     //API routes
     app.get("/api/notes", function(req, res) {
@@ -9,7 +8,14 @@ module.exports = (app) => {
       console.log('db');
     });
     app.post("/api/notes", function(req, res) {
-      db.push(req.body);
+    //   db.push(req.body);
+      let newEntry = {
+        id: Math.random() * 100,
+        title: req.body.title,
+        text: req.body.text
+      };
+      db.push(newEntry);
+      console.log(newEntry);
       res.json(true);
     });
     //HTML routes
@@ -19,21 +25,14 @@ module.exports = (app) => {
     });
     //Bonus
     // app.delete(`/api/notes/:${id}`, function(req, res) {
-    //   let array = [];
-    //   db.forEach(i, function() {
-    //     array.push(i);
-    //   });
-    //   array.forEach(j, function() {
-    //     if (j === id) {
-    //       array.pop(j);
-    //     }
-    //   });
-    //   db = '';
-    //   array.forEach(k, function() {
-    //     db += k;
-    //   });
-  
-    //   res.json({ ok: true });
+    //   let array = [];  
+    //   for (let i = 0; i < db.length; i++) {
+    //       if (db[i].id !== id) {
+    //           array.push(db[i]);
+    //       }
+    //   }
+    //   db = array;
+    //   res.json(true);
     // });
     app.get('*', function(req, res) {
         res.sendFile(path.join(__dirname, '../../index.html'));
