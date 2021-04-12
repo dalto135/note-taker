@@ -6,7 +6,7 @@ const path = require('path');
 // const path = require('./Develop/public/index');
 
 // const db = require('./Develop/db/db.json');
-let db = '';
+// let db = '';
 
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -28,47 +28,12 @@ app.use(express.static(path.join(__dirname, './Develop/public')));
 
 // require('./Develop/public/assets/js/index')(app);
 // require('./Develop/db/db.json')(app);
+require('./Develop/public/assets/js/routes')(app);
 
 
 // LISTENER
 // The below code effectively "starts" our server
 
-app.listen(PORT, () => {
+app.listen(PORT, function() {
   console.log(`App listening on PORT: http://localhost:${PORT}`);
 });
-
-module.exports = (app) => {
-  //HTML routes
-  app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
-  });
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
-  });
-  //API routes
-  app.get("/api/notes", function(req, res) {
-    res.json(db);
-  });
-  app.post("/api/notes", function(req, res) {
-    db.push(req.body);
-    res.json(true);
-  });
-  //Bonus
-  app.delete(`/api/notes/:${id}`, function(req, res) {
-    let array = [];
-    db.forEach(i, function() {
-      array.push(i);
-    });
-    array.forEach(j, function() {
-      if (j === id) {
-        array.pop(j);
-      }
-    });
-    db = '';
-    array.forEach(k, function() {
-      db += k;
-    });
-
-    res.json({ ok: true });
-  });
-}
