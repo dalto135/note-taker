@@ -27,4 +27,4 @@ An app that allows the user to create, save and delete notes. The app uses a Her
 MIT
 
 ## Contact
-Dalton Wilkins - wilkins.271@osu.edu
+Dalton Wilkins - daltongh@gmail.com
